@@ -1,0 +1,15 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_aaron_vesperman.Apple_o_matic.Donate Donate)
+(require <com.google.youngandroid.runtime>)
+
+;;; Donate
+
+(do-after-form-creation (set-and-coerce-property! 'Donate 'AppName "Apple_o_matic" 'text)
+ (set-and-coerce-property! 'Donate 'Scrollable #t 'boolean)
+ (set-and-coerce-property! 'Donate 'Title "Donate" 'text)
+)
+
+(init-runtime)

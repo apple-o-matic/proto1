@@ -1,0 +1,68 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="1" x="117" y="115">
+    <mutation component_type="Button" instance_name="PlanButton" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">PlanButton</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="2" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="3">
+            <field name="TEXT">Plan</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="4" x="113" y="206">
+    <mutation component_type="Button" instance_name="DistributeApplesButton" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">DistributeApplesButton</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="5" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="6">
+            <field name="TEXT">ApplePi</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="7" x="112" y="304">
+    <mutation component_type="Button" instance_name="VolunteerButton" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">VolunteerButton</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="8" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="9">
+            <field name="TEXT">Volunteer</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="10" x="114" y="393">
+    <mutation component_type="Button" instance_name="DonateButton" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">DonateButton</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="11" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="12">
+            <field name="TEXT">Donate</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="13" x="118" y="481">
+    <mutation component_type="Button" instance_name="GotoOverview" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">GotoOverview</field>
+    <statement name="DO">
+      <block type="controls_openAnotherScreen" id="14" inline="false">
+        <value name="SCREEN">
+          <block type="text" id="15">
+            <field name="TEXT">Overview</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="123" language-version="18"></yacodeblocks>
+</xml>

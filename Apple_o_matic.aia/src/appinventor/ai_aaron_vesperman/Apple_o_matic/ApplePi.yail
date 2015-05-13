@@ -1,0 +1,332 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_aaron_vesperman.Apple_o_matic.ApplePi ApplePi)
+(require <com.google.youngandroid.runtime>)
+
+(def g$tipCounter 3)
+(def g$tinyDBList (call-yail-primitive make-yail-list (*list-for-runtime* ) '() "make a list"))
+(def g$appleCounter 0)
+(def g$openCounter 0)
+(def g$isLidOpen 2)
+(def g$debounceLidCounter 0)
+(def (p$SetAlarmClockTimer )  (set-and-coerce-property! 'Clock1 'TimerInterval 3000 'number)(set-and-coerce-property! 'Clock1 'TimerEnabled #t 'boolean))
+(def (p$LidClosed )  (set-var! g$isLidOpen 0)((get-var p$SetAlarmClockTimer) ))
+(def (p$CreateFunTipsList ) (begin   (call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 0  "An apple a day keeps the doctor away.") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 1  "Apples fill you up.") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 2  "Apples boost brain power.") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 3  "During the winter apple trees have no leaves, no flowers and no apples.") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 4  "In the fall apples are ripe enough to pick for you to enjoy.") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 5  "Apples are grown in every state in the continental U S") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 6  "Each apple is hand picked by people using ladders and cloth buckets. ") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 7  "Apples are a delicious, convenient and nutritious super food found in every supermarket") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 8  "Because of apples\u2019 high fiber content, the fruit\u2019s natural sugars are slowly released into the blood stream, helping maintain steady blood sugar levels.") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 9  "Irving elementary students are making healthy eating choices today!") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 10  "Apples come in many varieties") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 11  "Apples are an easy way to eat more fruits each day for a healthy diet.") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 12  "Apples are convenient \u2013 Mother Nature\u2019s original fast foods") '(text any)) ) '(list any ) "add items to list")(call-yail-primitive yail-list-add-to-list! (*list-for-runtime* (get-var g$tinyDBList) (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* 13  "Apples are nutritious and a very good fruit for building healthy bodies.") '(text any)) ) '(list any ) "add items to list") (get-var g$tinyDBList)))
+(def (p$LidOpened )  (set-var! g$openCounter (call-yail-primitive + (*list-for-runtime* (get-var g$openCounter) 1 ) '(number number ) "+"))(set-and-coerce-property! 'LidOpenCounterLabel 'Text (get-var g$openCounter) 'text)(set-var! g$isLidOpen 1)((get-var p$AppleTaken) )(set-and-coerce-property! 'Clock1 'TimerEnabled #f 'boolean))
+(def (p$AppleTaken )  (set-var! g$appleCounter (call-yail-primitive + (*list-for-runtime* (get-var g$appleCounter) 1 ) '(number number ) "+"))(set-and-coerce-property! 'AppleCounterLabel 'Text (get-var g$appleCounter) 'text)(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* (call-yail-primitive string-append (*list-for-runtime* "Did you know " (call-yail-primitive yail-list-pick-random (*list-for-runtime* (get-var g$tinyDBList) ) '(list) "pick random item") ) '(text text ) "join")) '(text))(if (call-yail-primitive > (*list-for-runtime* (get-var g$appleCounter) 0) '(number number) ">") (begin   (set-and-coerce-property! 'ManualDecrementButton 'Enabled #t 'boolean))))
+(def (p$AppleReturned )  (set-var! g$appleCounter (call-yail-primitive - (*list-for-runtime* (get-var g$appleCounter) 1) '(number number) "-"))(set-and-coerce-property! 'AppleCounterLabel 'Text (get-var g$appleCounter) 'text)(if (call-yail-primitive <= (*list-for-runtime* (get-var g$appleCounter) 0) '(number number) "<=") (begin   (set-and-coerce-property! 'ManualDecrementButton 'Enabled #f 'boolean))))
+;;; ApplePi
+
+(do-after-form-creation (set-and-coerce-property! 'ApplePi 'AboutScreen "Apple-o-matic App Created during 2015 MIT System Design and Management ESD.413 by Spring Project Team 25 - Josh Bacon, Eli Grunn, Katrina Jennings, Wes Klingaman, Aaron Vesperman" 'text)
+ (set-and-coerce-property! 'ApplePi 'AlignHorizontal 3 'number)
+ (set-and-coerce-property! 'ApplePi 'AppName "HelloWorld" 'text)
+ (set-and-coerce-property! 'ApplePi 'CloseScreenAnimation "fade" 'text)
+ (set-and-coerce-property! 'ApplePi 'OpenScreenAnimation "zoom" 'text)
+ (set-and-coerce-property! 'ApplePi 'ScreenOrientation "landscape" 'text)
+ (set-and-coerce-property! 'ApplePi 'Title "Enjoy a US Apple" 'text)
+)
+
+(define-event ApplePi Initialize()(set-this-form)
+    (set-and-coerce-property! 'FunTipListPicker 'Elements ((get-var p$CreateFunTipsList) ) 'list)(set-and-coerce-property! 'FunTipListPicker 'SelectionIndex 0 'number)(set-and-coerce-property! 'ManualDecrementButton 'Enabled #f 'boolean)(set-and-coerce-property! 'Clock1 'TimerEnabled #f 'boolean)(call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* "Greetings!  We're the Apple Wise Guys.  Enjoy your U S apple. ") '(text)))
+;;; HorizontalArrangement1
+
+(add-component ApplePi HorizontalArrangement HorizontalArrangement1 
+)
+
+;;; TableArrangement1
+
+(add-component HorizontalArrangement1 TableArrangement TableArrangement1 
+(set-and-coerce-property! 'TableArrangement1 'Columns 7 'number)
+
+(set-and-coerce-property! 'TableArrangement1 'Width -2 'number)
+
+)
+
+;;; ManualDecrementButton
+
+(add-component TableArrangement1 Button ManualDecrementButton 
+(set-and-coerce-property! 'ManualDecrementButton 'BackgroundColor #xFFFF0000 'number)
+
+(set-and-coerce-property! 'ManualDecrementButton 'Image "AppIcon.png" 'text)
+
+(set-and-coerce-property! 'ManualDecrementButton 'Shape 1 'number)
+
+(set-and-coerce-property! 'ManualDecrementButton 'Text "-" 'text)
+
+(set-and-coerce-property! 'ManualDecrementButton 'Column 0 'number)
+
+(set-and-coerce-property! 'ManualDecrementButton 'Row 0 'number)
+
+(set-and-coerce-property! 'ManualDecrementButton 'Width 50 'number)
+
+(set-and-coerce-property! 'ManualDecrementButton 'Height 50 'number)
+
+)
+
+(define-event ManualDecrementButton Click()(set-this-form)
+    ((get-var p$AppleReturned) ))
+;;; ManualIncrementButton
+
+(add-component TableArrangement1 Button ManualIncrementButton 
+(set-and-coerce-property! 'ManualIncrementButton 'BackgroundColor #xFF00FF00 'number)
+
+(set-and-coerce-property! 'ManualIncrementButton 'Image "AppIconGreen.png" 'text)
+
+(set-and-coerce-property! 'ManualIncrementButton 'Text "+" 'text)
+
+(set-and-coerce-property! 'ManualIncrementButton 'Column 6 'number)
+
+(set-and-coerce-property! 'ManualIncrementButton 'Row 0 'number)
+
+(set-and-coerce-property! 'ManualIncrementButton 'Width 50 'number)
+
+(set-and-coerce-property! 'ManualIncrementButton 'Height 50 'number)
+
+)
+
+(define-event ManualIncrementButton Click()(set-this-form)
+    ((get-var p$AppleTaken) ))
+;;; LidOpenCounterLabel
+
+(add-component TableArrangement1 Label LidOpenCounterLabel 
+(set-and-coerce-property! 'LidOpenCounterLabel 'FontTypeface 3 'number)
+
+(set-and-coerce-property! 'LidOpenCounterLabel 'Text "No" 'text)
+
+(set-and-coerce-property! 'LidOpenCounterLabel 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'LidOpenCounterLabel 'Column 2 'number)
+
+(set-and-coerce-property! 'LidOpenCounterLabel 'Row 0 'number)
+
+)
+
+;;; AppleCounterTextLabel
+
+(add-component TableArrangement1 Label AppleCounterTextLabel 
+(set-and-coerce-property! 'AppleCounterTextLabel 'FontBold #t 'boolean)
+
+(set-and-coerce-property! 'AppleCounterTextLabel 'FontTypeface 3 'number)
+
+(set-and-coerce-property! 'AppleCounterTextLabel 'Text "Apples Taken" 'text)
+
+(set-and-coerce-property! 'AppleCounterTextLabel 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'AppleCounterTextLabel 'Column 2 'number)
+
+(set-and-coerce-property! 'AppleCounterTextLabel 'Row 0 'number)
+
+(set-and-coerce-property! 'AppleCounterTextLabel 'Width 150 'number)
+
+)
+
+;;; LidOpenCounterTextLabel
+
+(add-component TableArrangement1 Label LidOpenCounterTextLabel 
+(set-and-coerce-property! 'LidOpenCounterTextLabel 'FontBold #t 'boolean)
+
+(set-and-coerce-property! 'LidOpenCounterTextLabel 'FontTypeface 3 'number)
+
+(set-and-coerce-property! 'LidOpenCounterTextLabel 'Text "Peeks Taken" 'text)
+
+(set-and-coerce-property! 'LidOpenCounterTextLabel 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'LidOpenCounterTextLabel 'Visible #f 'boolean)
+
+(set-and-coerce-property! 'LidOpenCounterTextLabel 'Column 2 'number)
+
+(set-and-coerce-property! 'LidOpenCounterTextLabel 'Row 1 'number)
+
+)
+
+;;; AppleCounterLabel
+
+(add-component TableArrangement1 Label AppleCounterLabel 
+(set-and-coerce-property! 'AppleCounterLabel 'FontTypeface 3 'number)
+
+(set-and-coerce-property! 'AppleCounterLabel 'Text "No" 'text)
+
+(set-and-coerce-property! 'AppleCounterLabel 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'AppleCounterLabel 'Column 4 'number)
+
+(set-and-coerce-property! 'AppleCounterLabel 'Row 0 'number)
+
+(set-and-coerce-property! 'AppleCounterLabel 'Width 150 'number)
+
+)
+
+;;; Debug2
+
+(add-component TableArrangement1 Label Debug2 
+(set-and-coerce-property! 'Debug2 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'Debug2 'Visible #f 'boolean)
+
+(set-and-coerce-property! 'Debug2 'Column 4 'number)
+
+(set-and-coerce-property! 'Debug2 'Row 1 'number)
+
+(set-and-coerce-property! 'Debug2 'Width 100 'number)
+
+)
+
+;;; Debug1
+
+(add-component TableArrangement1 Label Debug1 
+(set-and-coerce-property! 'Debug1 'TextAlignment 1 'number)
+
+(set-and-coerce-property! 'Debug1 'Visible #f 'boolean)
+
+(set-and-coerce-property! 'Debug1 'Column 2 'number)
+
+(set-and-coerce-property! 'Debug1 'Row 1 'number)
+
+(set-and-coerce-property! 'Debug1 'Width 100 'number)
+
+)
+
+;;; Label1
+
+(add-component TableArrangement1 Label Label1 
+(set-and-coerce-property! 'Label1 'Column 0 'number)
+
+(set-and-coerce-property! 'Label1 'Row 1 'number)
+
+)
+
+;;; Label2
+
+(add-component TableArrangement1 Label Label2 
+(set-and-coerce-property! 'Label2 'Column 6 'number)
+
+(set-and-coerce-property! 'Label2 'Row 1 'number)
+
+)
+
+;;; Canvas1
+
+(add-component ApplePi Canvas Canvas1 
+(set-and-coerce-property! 'Canvas1 'Width -2 'number)
+
+(set-and-coerce-property! 'Canvas1 'Height -2 'number)
+
+)
+
+;;; DeeLicious
+
+(add-component Canvas1 ImageSprite DeeLicious 
+(set-and-coerce-property! 'DeeLicious 'Heading 90 'number)
+
+(set-and-coerce-property! 'DeeLicious 'Picture "DeeLicious-small.png" 'text)
+
+(set-and-coerce-property! 'DeeLicious 'Rotates #f 'boolean)
+
+(set-and-coerce-property! 'DeeLicious 'Speed 0 'number)
+
+(set-and-coerce-property! 'DeeLicious 'X 109 'number)
+
+(set-and-coerce-property! 'DeeLicious 'Y 0 'number)
+
+)
+
+;;; MackNTosh
+
+(add-component Canvas1 ImageSprite MackNTosh 
+(set-and-coerce-property! 'MackNTosh 'Heading 90 'number)
+
+(set-and-coerce-property! 'MackNTosh 'Picture "Mack-N-Tosh-small.png" 'text)
+
+(set-and-coerce-property! 'MackNTosh 'Rotates #f 'boolean)
+
+(set-and-coerce-property! 'MackNTosh 'Speed 0 'number)
+
+(set-and-coerce-property! 'MackNTosh 'X 292 'number)
+
+(set-and-coerce-property! 'MackNTosh 'Y 10 'number)
+
+)
+
+;;; GrannySmith
+
+(add-component Canvas1 ImageSprite GrannySmith 
+(set-and-coerce-property! 'GrannySmith 'Picture "GrannySmith-small.png" 'text)
+
+(set-and-coerce-property! 'GrannySmith 'X 205 'number)
+
+(set-and-coerce-property! 'GrannySmith 'Y 0 'number)
+
+)
+
+;;; FunTipsTitle
+
+(add-component ApplePi Label FunTipsTitle 
+(set-and-coerce-property! 'FunTipsTitle 'FontBold #t 'boolean)
+
+(set-and-coerce-property! 'FunTipsTitle 'FontTypeface 3 'number)
+
+(set-and-coerce-property! 'FunTipsTitle 'Text "Fun Tips" 'text)
+
+)
+
+;;; FunTipListPicker
+
+(add-component ApplePi ListPicker FunTipListPicker 
+(set-and-coerce-property! 'FunTipListPicker 'FontTypeface 3 'number)
+
+(set-and-coerce-property! 'FunTipListPicker 'Shape 1 'number)
+
+(set-and-coerce-property! 'FunTipListPicker 'ShowFilterBar #t 'boolean)
+
+(set-and-coerce-property! 'FunTipListPicker 'Text "Learn more fun facts about apples" 'text)
+
+)
+
+(define-event FunTipListPicker AfterPicking()(set-this-form)
+    (call-component-method 'TextToSpeech1 'Speak (*list-for-runtime* (call-yail-primitive string-append (*list-for-runtime* "Did you know " (get-property 'FunTipListPicker 'Selection) ) '(text text ) "join")) '(text)))
+;;; TextToSpeech1
+
+(add-component ApplePi TextToSpeech TextToSpeech1 
+(set-and-coerce-property! 'TextToSpeech1 'Country "Us" 'text)
+
+(set-and-coerce-property! 'TextToSpeech1 'Language "enlglish" 'text)
+
+)
+
+;;; AccelerometerSensor1
+
+(add-component ApplePi AccelerometerSensor AccelerometerSensor1 
+)
+
+(define-event AccelerometerSensor1 AccelerationChanged($xAccel $yAccel $zAccel)(set-this-form)
+    (if (and-delayed (call-yail-primitive >= (*list-for-runtime* (get-var g$isLidOpen) 1) '(number number) ">=") (call-yail-primitive < (*list-for-runtime* (lexical-value $xAccel) 2) '(number number) "<")) (begin   (set-var! g$debounceLidCounter (call-yail-primitive + (*list-for-runtime* (get-var g$debounceLidCounter) 1 ) '(number number ) "+"))(if (call-yail-primitive > (*list-for-runtime* (get-var g$debounceLidCounter) 5) '(number number) ">") (begin   ((get-var p$LidClosed) )(set-and-coerce-property! 'MackNTosh 'Heading 270 'number)(set-and-coerce-property! 'DeeLicious 'Heading 270 'number)))) (begin (if (and-delayed (call-yail-primitive <= (*list-for-runtime* (get-var g$isLidOpen) 0) '(number number) "<=") (call-yail-primitive > (*list-for-runtime* (lexical-value $xAccel) 7) '(number number) ">")) (begin   (set-var! g$debounceLidCounter (call-yail-primitive + (*list-for-runtime* (get-var g$debounceLidCounter) 1 ) '(number number ) "+"))(if (call-yail-primitive > (*list-for-runtime* (get-var g$debounceLidCounter) 5) '(number number) ">") (begin   ((get-var p$LidOpened) )(set-and-coerce-property! 'MackNTosh 'Heading 90 'number)(set-and-coerce-property! 'DeeLicious 'Heading 90 'number)))) (begin   (set-var! g$debounceLidCounter 0)))))(set-and-coerce-property! 'Debug1 'Text (lexical-value $yAccel) 'text)(set-and-coerce-property! 'Debug2 'Text (lexical-value $xAccel) 'text))
+;;; TinyDB1
+
+(add-component ApplePi TinyDB TinyDB1 
+)
+
+;;; Notifier1
+
+(add-component ApplePi Notifier Notifier1 
+)
+
+;;; Clock1
+
+(add-component ApplePi Clock Clock1 
+)
+
+(define-event Clock1 Timer()(set-this-form)
+    (call-component-method 'Sound1 'Vibrate (*list-for-runtime* 1000) '(number)))
+;;; Sound1
+
+(add-component ApplePi Sound Sound1 
+)
+
+;;; File1
+
+(add-component ApplePi File File1 
+)
+
+(init-runtime)

@@ -1,0 +1,23 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_aaron_vesperman.Apple_o_matic.Overview Overview)
+(require <com.google.youngandroid.runtime>)
+
+;;; Overview
+
+(do-after-form-creation (set-and-coerce-property! 'Overview 'AboutScreen "Apple-o-matic App Created during 2015 MIT System Design and Management ESD.413 by Spring Project Team 25 - Josh Bacon, Eli Grunn, Katrina Jennings, Wes Klingaman, Aaron Vesperman" 'text)
+ (set-and-coerce-property! 'Overview 'AppName "Apple_o_matic" 'text)
+ (set-and-coerce-property! 'Overview 'ScreenOrientation "landscape" 'text)
+ (set-and-coerce-property! 'Overview 'Title "Overview" 'text)
+)
+
+;;; Image1
+
+(add-component Overview Image Image1 
+(set-and-coerce-property! 'Image1 'Picture "OperationConcept-FeedingChildren.png" 'text)
+
+)
+
+(init-runtime)

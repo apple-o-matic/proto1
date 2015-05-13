@@ -1,0 +1,15 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_aaron_vesperman.Apple_o_matic.Volunteer Volunteer)
+(require <com.google.youngandroid.runtime>)
+
+;;; Volunteer
+
+(do-after-form-creation (set-and-coerce-property! 'Volunteer 'AppName "Apple_o_matic" 'text)
+ (set-and-coerce-property! 'Volunteer 'Scrollable #t 'boolean)
+ (set-and-coerce-property! 'Volunteer 'Title "Volunteer" 'text)
+)
+
+(init-runtime)

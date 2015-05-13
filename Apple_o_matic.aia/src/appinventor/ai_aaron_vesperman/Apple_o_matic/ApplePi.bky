@@ -1,0 +1,1087 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="1" x="163" y="-439">
+    <mutation component_type="Clock" instance_name="Clock1" event_name="Timer"></mutation>
+    <field name="COMPONENT_SELECTOR">Clock1</field>
+    <statement name="DO">
+      <block type="component_method" id="2" inline="false">
+        <mutation component_type="Sound" method_name="Vibrate" is_generic="false" instance_name="Sound1"></mutation>
+        <field name="COMPONENT_SELECTOR">Sound1</field>
+        <value name="ARG0">
+          <block type="math_number" id="3">
+            <field name="NUM">1000</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="global_declaration" id="4" inline="false" x="-557" y="-263">
+    <field name="NAME">tipCounter</field>
+    <value name="VALUE">
+      <block type="math_number" id="5">
+        <field name="NUM">3</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="6" inline="false" x="-554" y="-230">
+    <field name="NAME">tinyDBList</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="7">
+        <mutation items="0"></mutation>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="8" inline="false" x="-553" y="-186">
+    <field name="NAME">appleCounter</field>
+    <value name="VALUE">
+      <block type="math_number" id="9">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="10" inline="false" x="-554" y="-144">
+    <field name="NAME">openCounter</field>
+    <value name="VALUE">
+      <block type="math_number" id="11">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="12" inline="false" x="-554" y="-100">
+    <field name="NAME">isLidOpen</field>
+    <value name="VALUE">
+      <block type="math_number" id="13">
+        <field name="NUM">2</field>
+      </block>
+    </value>
+  </block>
+  <block type="global_declaration" id="14" inline="false" x="-554" y="-65">
+    <field name="NAME">debounceLidCounter</field>
+    <value name="VALUE">
+      <block type="math_number" id="15">
+        <field name="NUM">0</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defnoreturn" id="16" x="-552" y="-33">
+    <mutation></mutation>
+    <field name="NAME">SetAlarmClockTimer</field>
+    <statement name="STACK">
+      <block type="component_set_get" id="17" inline="false">
+        <mutation component_type="Clock" set_or_get="set" property_name="TimerInterval" is_generic="false" instance_name="Clock1"></mutation>
+        <field name="COMPONENT_SELECTOR">Clock1</field>
+        <field name="PROP">TimerInterval</field>
+        <value name="VALUE">
+          <block type="math_number" id="18">
+            <field name="NUM">3000</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="19" inline="false">
+            <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock1"></mutation>
+            <field name="COMPONENT_SELECTOR">Clock1</field>
+            <field name="PROP">TimerEnabled</field>
+            <value name="VALUE">
+              <block type="logic_false" id="20">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="21" x="-556" y="116">
+    <mutation></mutation>
+    <field name="NAME">LidClosed</field>
+    <statement name="STACK">
+      <block type="lexical_variable_set" id="22" inline="false">
+        <field name="VAR">global isLidOpen</field>
+        <value name="VALUE">
+          <block type="math_number" id="23">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="procedures_callnoreturn" id="24">
+            <mutation name="SetAlarmClockTimer"></mutation>
+            <field name="PROCNAME">SetAlarmClockTimer</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="25" inline="false" x="952" y="112">
+    <mutation></mutation>
+    <field name="NAME">CreateFunTipsList</field>
+    <value name="RETURN">
+      <block type="controls_do_then_return" id="26" inline="false">
+        <statement name="STM">
+          <block type="lists_add_items" id="27" inline="false">
+            <mutation items="1"></mutation>
+            <value name="LIST">
+              <block type="lexical_variable_get" id="28">
+                <field name="VAR">global tinyDBList</field>
+              </block>
+            </value>
+            <value name="ITEM0">
+              <block type="component_method" id="29" inline="false">
+                <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                <value name="ARG0">
+                  <block type="math_number" id="30">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="text" id="31">
+                    <field name="TEXT">An apple a day keeps the doctor away.</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="lists_add_items" id="32" inline="false">
+                <mutation items="1"></mutation>
+                <value name="LIST">
+                  <block type="lexical_variable_get" id="33">
+                    <field name="VAR">global tinyDBList</field>
+                  </block>
+                </value>
+                <value name="ITEM0">
+                  <block type="component_method" id="34" inline="false">
+                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                    <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                    <value name="ARG0">
+                      <block type="math_number" id="35">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="ARG1">
+                      <block type="text" id="36">
+                        <field name="TEXT">Apples fill you up.</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="lists_add_items" id="37" inline="false">
+                    <mutation items="1"></mutation>
+                    <value name="LIST">
+                      <block type="lexical_variable_get" id="38">
+                        <field name="VAR">global tinyDBList</field>
+                      </block>
+                    </value>
+                    <value name="ITEM0">
+                      <block type="component_method" id="39" inline="false">
+                        <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                        <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                        <value name="ARG0">
+                          <block type="math_number" id="40">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="ARG1">
+                          <block type="text" id="41">
+                            <field name="TEXT">Apples boost brain power.</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="lists_add_items" id="42" inline="false">
+                        <mutation items="1"></mutation>
+                        <value name="LIST">
+                          <block type="lexical_variable_get" id="43">
+                            <field name="VAR">global tinyDBList</field>
+                          </block>
+                        </value>
+                        <value name="ITEM0">
+                          <block type="component_method" id="44" inline="false">
+                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                            <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                            <value name="ARG0">
+                              <block type="math_number" id="45">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                            <value name="ARG1">
+                              <block type="text" id="46">
+                                <field name="TEXT">During the winter apple trees have no leaves, no flowers and no apples.</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="lists_add_items" id="47" inline="false">
+                            <mutation items="1"></mutation>
+                            <value name="LIST">
+                              <block type="lexical_variable_get" id="48">
+                                <field name="VAR">global tinyDBList</field>
+                              </block>
+                            </value>
+                            <value name="ITEM0">
+                              <block type="component_method" id="49" inline="false">
+                                <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                <value name="ARG0">
+                                  <block type="math_number" id="50">
+                                    <field name="NUM">4</field>
+                                  </block>
+                                </value>
+                                <value name="ARG1">
+                                  <block type="text" id="51">
+                                    <field name="TEXT">In the fall apples are ripe enough to pick for you to enjoy.</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="lists_add_items" id="52" inline="false">
+                                <mutation items="1"></mutation>
+                                <value name="LIST">
+                                  <block type="lexical_variable_get" id="53">
+                                    <field name="VAR">global tinyDBList</field>
+                                  </block>
+                                </value>
+                                <value name="ITEM0">
+                                  <block type="component_method" id="54" inline="false">
+                                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                    <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                    <value name="ARG0">
+                                      <block type="math_number" id="55">
+                                        <field name="NUM">5</field>
+                                      </block>
+                                    </value>
+                                    <value name="ARG1">
+                                      <block type="text" id="56">
+                                        <field name="TEXT">Apples are grown in every state in the continental U S</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="lists_add_items" id="57" inline="false">
+                                    <mutation items="1"></mutation>
+                                    <value name="LIST">
+                                      <block type="lexical_variable_get" id="58">
+                                        <field name="VAR">global tinyDBList</field>
+                                      </block>
+                                    </value>
+                                    <value name="ITEM0">
+                                      <block type="component_method" id="59" inline="false">
+                                        <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                        <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                        <value name="ARG0">
+                                          <block type="math_number" id="60">
+                                            <field name="NUM">6</field>
+                                          </block>
+                                        </value>
+                                        <value name="ARG1">
+                                          <block type="text" id="61">
+                                            <field name="TEXT">Each apple is hand picked by people using ladders and cloth buckets. </field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="lists_add_items" id="62" inline="false">
+                                        <mutation items="1"></mutation>
+                                        <value name="LIST">
+                                          <block type="lexical_variable_get" id="63">
+                                            <field name="VAR">global tinyDBList</field>
+                                          </block>
+                                        </value>
+                                        <value name="ITEM0">
+                                          <block type="component_method" id="64" inline="false">
+                                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                            <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                            <value name="ARG0">
+                                              <block type="math_number" id="65">
+                                                <field name="NUM">7</field>
+                                              </block>
+                                            </value>
+                                            <value name="ARG1">
+                                              <block type="text" id="66">
+                                                <field name="TEXT">Apples are a delicious, convenient and nutritious super food found in every supermarket</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="lists_add_items" id="67" inline="false">
+                                            <mutation items="1"></mutation>
+                                            <value name="LIST">
+                                              <block type="lexical_variable_get" id="68">
+                                                <field name="VAR">global tinyDBList</field>
+                                              </block>
+                                            </value>
+                                            <value name="ITEM0">
+                                              <block type="component_method" id="69" inline="false">
+                                                <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                                <value name="ARG0">
+                                                  <block type="math_number" id="70">
+                                                    <field name="NUM">8</field>
+                                                  </block>
+                                                </value>
+                                                <value name="ARG1">
+                                                  <block type="text" id="71">
+                                                    <field name="TEXT">Because of apples’ high fiber content, the fruit’s natural sugars are slowly released into the blood stream, helping maintain steady blood sugar levels.</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="lists_add_items" id="72" inline="false">
+                                                <mutation items="1"></mutation>
+                                                <value name="LIST">
+                                                  <block type="lexical_variable_get" id="73">
+                                                    <field name="VAR">global tinyDBList</field>
+                                                  </block>
+                                                </value>
+                                                <value name="ITEM0">
+                                                  <block type="component_method" id="74" inline="false">
+                                                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                                    <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                                    <value name="ARG0">
+                                                      <block type="math_number" id="75">
+                                                        <field name="NUM">9</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ARG1">
+                                                      <block type="text" id="76">
+                                                        <field name="TEXT">Irving elementary students are making healthy eating choices today!</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="lists_add_items" id="77" inline="false">
+                                                    <mutation items="1"></mutation>
+                                                    <value name="LIST">
+                                                      <block type="lexical_variable_get" id="78">
+                                                        <field name="VAR">global tinyDBList</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ITEM0">
+                                                      <block type="component_method" id="79" inline="false">
+                                                        <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                                        <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                                        <value name="ARG0">
+                                                          <block type="math_number" id="80">
+                                                            <field name="NUM">10</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ARG1">
+                                                          <block type="text" id="81">
+                                                            <field name="TEXT">Apples come in many varieties</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="lists_add_items" id="82" inline="false">
+                                                        <mutation items="1"></mutation>
+                                                        <value name="LIST">
+                                                          <block type="lexical_variable_get" id="83">
+                                                            <field name="VAR">global tinyDBList</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ITEM0">
+                                                          <block type="component_method" id="84" inline="false">
+                                                            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                                            <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                                            <value name="ARG0">
+                                                              <block type="math_number" id="85">
+                                                                <field name="NUM">11</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="ARG1">
+                                                              <block type="text" id="86">
+                                                                <field name="TEXT">Apples are an easy way to eat more fruits each day for a healthy diet.</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="lists_add_items" id="87" inline="false">
+                                                            <mutation items="1"></mutation>
+                                                            <value name="LIST">
+                                                              <block type="lexical_variable_get" id="88">
+                                                                <field name="VAR">global tinyDBList</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="ITEM0">
+                                                              <block type="component_method" id="89" inline="false">
+                                                                <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                                                <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                                                <value name="ARG0">
+                                                                  <block type="math_number" id="90">
+                                                                    <field name="NUM">12</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="ARG1">
+                                                                  <block type="text" id="91">
+                                                                    <field name="TEXT">Apples are convenient – Mother Nature’s original fast foods</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="lists_add_items" id="92" inline="false">
+                                                                <mutation items="1"></mutation>
+                                                                <value name="LIST">
+                                                                  <block type="lexical_variable_get" id="93">
+                                                                    <field name="VAR">global tinyDBList</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="ITEM0">
+                                                                  <block type="component_method" id="94" inline="false">
+                                                                    <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+                                                                    <field name="COMPONENT_SELECTOR">TinyDB1</field>
+                                                                    <value name="ARG0">
+                                                                      <block type="math_number" id="95">
+                                                                        <field name="NUM">13</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="ARG1">
+                                                                      <block type="text" id="96">
+                                                                        <field name="TEXT">Apples are nutritious and a very good fruit for building healthy bodies.</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="VALUE">
+          <block type="lexical_variable_get" id="97">
+            <field name="VAR">global tinyDBList</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="component_event" id="98" x="177" y="167">
+    <mutation component_type="Form" instance_name="ApplePi" event_name="Initialize"></mutation>
+    <field name="COMPONENT_SELECTOR">ApplePi</field>
+    <statement name="DO">
+      <block type="component_set_get" id="99" inline="false">
+        <mutation component_type="ListPicker" set_or_get="set" property_name="Elements" is_generic="false" instance_name="FunTipListPicker"></mutation>
+        <field name="COMPONENT_SELECTOR">FunTipListPicker</field>
+        <field name="PROP">Elements</field>
+        <value name="VALUE">
+          <block type="procedures_callreturn" id="100">
+            <mutation name="CreateFunTipsList"></mutation>
+            <field name="PROCNAME">CreateFunTipsList</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="101" inline="false">
+            <mutation component_type="ListPicker" set_or_get="set" property_name="SelectionIndex" is_generic="false" instance_name="FunTipListPicker"></mutation>
+            <field name="COMPONENT_SELECTOR">FunTipListPicker</field>
+            <field name="PROP">SelectionIndex</field>
+            <value name="VALUE">
+              <block type="math_number" id="102">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="103" inline="false">
+                <mutation component_type="Button" set_or_get="set" property_name="Enabled" is_generic="false" instance_name="ManualDecrementButton"></mutation>
+                <field name="COMPONENT_SELECTOR">ManualDecrementButton</field>
+                <field name="PROP">Enabled</field>
+                <value name="VALUE">
+                  <block type="logic_false" id="104">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="component_set_get" id="105" inline="false">
+                    <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock1"></mutation>
+                    <field name="COMPONENT_SELECTOR">Clock1</field>
+                    <field name="PROP">TimerEnabled</field>
+                    <value name="VALUE">
+                      <block type="logic_false" id="106">
+                        <field name="BOOL">FALSE</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="component_method" id="107" inline="false">
+                        <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                        <field name="COMPONENT_SELECTOR">TextToSpeech1</field>
+                        <value name="ARG0">
+                          <block type="text" id="108">
+                            <field name="TEXT">Greetings!  We're the Apple Wise Guys.  Enjoy your U S apple. </field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="109" x="-558" y="297">
+    <mutation></mutation>
+    <field name="NAME">LidOpened</field>
+    <statement name="STACK">
+      <block type="lexical_variable_set" id="110" inline="false">
+        <field name="VAR">global openCounter</field>
+        <value name="VALUE">
+          <block type="math_add" id="111" inline="true">
+            <mutation items="2"></mutation>
+            <value name="NUM0">
+              <block type="lexical_variable_get" id="112">
+                <field name="VAR">global openCounter</field>
+              </block>
+            </value>
+            <value name="NUM1">
+              <block type="math_number" id="113">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="114" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="LidOpenCounterLabel"></mutation>
+            <field name="COMPONENT_SELECTOR">LidOpenCounterLabel</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="lexical_variable_get" id="115">
+                <field name="VAR">global openCounter</field>
+              </block>
+            </value>
+            <next>
+              <block type="lexical_variable_set" id="116" inline="false">
+                <field name="VAR">global isLidOpen</field>
+                <value name="VALUE">
+                  <block type="math_number" id="117">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id="118">
+                    <mutation name="AppleTaken"></mutation>
+                    <field name="PROCNAME">AppleTaken</field>
+                    <next>
+                      <block type="component_set_get" id="119" inline="false">
+                        <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock1"></mutation>
+                        <field name="COMPONENT_SELECTOR">Clock1</field>
+                        <field name="PROP">TimerEnabled</field>
+                        <value name="VALUE">
+                          <block type="logic_false" id="120">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="121" x="180" y="395">
+    <mutation component_type="ListPicker" instance_name="FunTipListPicker" event_name="AfterPicking"></mutation>
+    <field name="COMPONENT_SELECTOR">FunTipListPicker</field>
+    <statement name="DO">
+      <block type="component_method" id="122" inline="false">
+        <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+        <field name="COMPONENT_SELECTOR">TextToSpeech1</field>
+        <value name="ARG0">
+          <block type="text_join" id="123" inline="false">
+            <mutation items="2"></mutation>
+            <value name="ADD0">
+              <block type="text" id="124">
+                <field name="TEXT">Did you know </field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="component_set_get" id="125">
+                <mutation component_type="ListPicker" set_or_get="get" property_name="Selection" is_generic="false" instance_name="FunTipListPicker"></mutation>
+                <field name="COMPONENT_SELECTOR">FunTipListPicker</field>
+                <field name="PROP">Selection</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="126" x="-543" y="580">
+    <mutation></mutation>
+    <field name="NAME">AppleTaken</field>
+    <statement name="STACK">
+      <block type="lexical_variable_set" id="127" inline="false">
+        <field name="VAR">global appleCounter</field>
+        <value name="VALUE">
+          <block type="math_add" id="128" inline="true">
+            <mutation items="2"></mutation>
+            <value name="NUM0">
+              <block type="lexical_variable_get" id="129">
+                <field name="VAR">global appleCounter</field>
+              </block>
+            </value>
+            <value name="NUM1">
+              <block type="math_number" id="130">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="131" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="AppleCounterLabel"></mutation>
+            <field name="COMPONENT_SELECTOR">AppleCounterLabel</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="lexical_variable_get" id="132">
+                <field name="VAR">global appleCounter</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_method" id="133" inline="false">
+                <mutation component_type="TextToSpeech" method_name="Speak" is_generic="false" instance_name="TextToSpeech1"></mutation>
+                <field name="COMPONENT_SELECTOR">TextToSpeech1</field>
+                <value name="ARG0">
+                  <block type="text_join" id="134" inline="false">
+                    <mutation items="2"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="135">
+                        <field name="TEXT">Did you know </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="lists_pick_random_item" id="136" inline="false">
+                        <value name="LIST">
+                          <block type="lexical_variable_get" id="137">
+                            <field name="VAR">global tinyDBList</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="138" inline="false">
+                    <value name="IF0">
+                      <block type="math_compare" id="139" inline="true">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <block type="lexical_variable_get" id="140">
+                            <field name="VAR">global appleCounter</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="141">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="component_set_get" id="142" inline="false">
+                        <mutation component_type="Button" set_or_get="set" property_name="Enabled" is_generic="false" instance_name="ManualDecrementButton"></mutation>
+                        <field name="COMPONENT_SELECTOR">ManualDecrementButton</field>
+                        <field name="PROP">Enabled</field>
+                        <value name="VALUE">
+                          <block type="logic_false" id="143">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="144" x="181" y="692">
+    <mutation component_type="Button" instance_name="ManualIncrementButton" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">ManualIncrementButton</field>
+    <statement name="DO">
+      <block type="procedures_callnoreturn" id="145">
+        <mutation name="AppleTaken"></mutation>
+        <field name="PROCNAME">AppleTaken</field>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="146" x="507" y="692">
+    <mutation component_type="Button" instance_name="ManualDecrementButton" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">ManualDecrementButton</field>
+    <statement name="DO">
+      <block type="procedures_callnoreturn" id="147">
+        <mutation name="AppleReturned"></mutation>
+        <field name="PROCNAME">AppleReturned</field>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="148" x="214" y="785">
+    <mutation component_type="AccelerometerSensor" instance_name="AccelerometerSensor1" event_name="AccelerationChanged"></mutation>
+    <field name="COMPONENT_SELECTOR">AccelerometerSensor1</field>
+    <statement name="DO">
+      <block type="controls_if" id="149" inline="false">
+        <mutation elseif="1" else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_operation" id="150" inline="true">
+            <field name="OP">AND</field>
+            <value name="A">
+              <block type="math_compare" id="151" inline="true">
+                <field name="OP">GTE</field>
+                <value name="A">
+                  <block type="lexical_variable_get" id="152">
+                    <field name="VAR">global isLidOpen</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="153">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_compare" id="154" inline="true">
+                <field name="OP">LT</field>
+                <value name="A">
+                  <block type="lexical_variable_get" id="155">
+                    <mutation>
+                      <eventparam name="xAccel"></eventparam>
+                    </mutation>
+                    <field name="VAR">xAccel</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="156">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="lexical_variable_set" id="157" inline="false">
+            <field name="VAR">global debounceLidCounter</field>
+            <value name="VALUE">
+              <block type="math_add" id="158" inline="true">
+                <mutation items="2"></mutation>
+                <value name="NUM0">
+                  <block type="lexical_variable_get" id="159">
+                    <field name="VAR">global debounceLidCounter</field>
+                  </block>
+                </value>
+                <value name="NUM1">
+                  <block type="math_number" id="160">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="161" inline="false">
+                <value name="IF0">
+                  <block type="math_compare" id="162" inline="true">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="lexical_variable_get" id="163">
+                        <field name="VAR">global debounceLidCounter</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="164">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="165">
+                    <mutation name="LidClosed"></mutation>
+                    <field name="PROCNAME">LidClosed</field>
+                    <next>
+                      <block type="component_set_get" id="166" inline="false">
+                        <mutation component_type="ImageSprite" set_or_get="set" property_name="Heading" is_generic="false" instance_name="MackNTosh"></mutation>
+                        <field name="COMPONENT_SELECTOR">MackNTosh</field>
+                        <field name="PROP">Heading</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="167">
+                            <field name="NUM">270</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_set_get" id="168" inline="false">
+                            <mutation component_type="ImageSprite" set_or_get="set" property_name="Heading" is_generic="false" instance_name="DeeLicious"></mutation>
+                            <field name="COMPONENT_SELECTOR">DeeLicious</field>
+                            <field name="PROP">Heading</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="169">
+                                <field name="NUM">270</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_operation" id="170" inline="true">
+            <field name="OP">AND</field>
+            <value name="A">
+              <block type="math_compare" id="171" inline="true">
+                <field name="OP">LTE</field>
+                <value name="A">
+                  <block type="lexical_variable_get" id="172">
+                    <field name="VAR">global isLidOpen</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="173">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_compare" id="174" inline="true">
+                <field name="OP">GT</field>
+                <value name="A">
+                  <block type="lexical_variable_get" id="175">
+                    <mutation>
+                      <eventparam name="xAccel"></eventparam>
+                    </mutation>
+                    <field name="VAR">xAccel</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="176">
+                    <field name="NUM">7</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="lexical_variable_set" id="177" inline="false">
+            <field name="VAR">global debounceLidCounter</field>
+            <value name="VALUE">
+              <block type="math_add" id="178" inline="true">
+                <mutation items="2"></mutation>
+                <value name="NUM0">
+                  <block type="lexical_variable_get" id="179">
+                    <field name="VAR">global debounceLidCounter</field>
+                  </block>
+                </value>
+                <value name="NUM1">
+                  <block type="math_number" id="180">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="181" inline="false">
+                <value name="IF0">
+                  <block type="math_compare" id="182" inline="true">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="lexical_variable_get" id="183">
+                        <field name="VAR">global debounceLidCounter</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="184">
+                        <field name="NUM">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="185">
+                    <mutation name="LidOpened"></mutation>
+                    <field name="PROCNAME">LidOpened</field>
+                    <next>
+                      <block type="component_set_get" id="186" inline="false">
+                        <mutation component_type="ImageSprite" set_or_get="set" property_name="Heading" is_generic="false" instance_name="MackNTosh"></mutation>
+                        <field name="COMPONENT_SELECTOR">MackNTosh</field>
+                        <field name="PROP">Heading</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="187">
+                            <field name="NUM">90</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="component_set_get" id="188" inline="false">
+                            <mutation component_type="ImageSprite" set_or_get="set" property_name="Heading" is_generic="false" instance_name="DeeLicious"></mutation>
+                            <field name="COMPONENT_SELECTOR">DeeLicious</field>
+                            <field name="PROP">Heading</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="189">
+                                <field name="NUM">90</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="lexical_variable_set" id="190" inline="false">
+            <field name="VAR">global debounceLidCounter</field>
+            <value name="VALUE">
+              <block type="math_number" id="191">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="component_set_get" id="192" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="Debug1"></mutation>
+            <field name="COMPONENT_SELECTOR">Debug1</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="lexical_variable_get" id="193">
+                <mutation>
+                  <eventparam name="yAccel"></eventparam>
+                </mutation>
+                <field name="VAR">yAccel</field>
+              </block>
+            </value>
+            <next>
+              <block type="component_set_get" id="194" inline="false">
+                <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="Debug2"></mutation>
+                <field name="COMPONENT_SELECTOR">Debug2</field>
+                <field name="PROP">Text</field>
+                <value name="VALUE">
+                  <block type="lexical_variable_get" id="195">
+                    <mutation>
+                      <eventparam name="xAccel"></eventparam>
+                    </mutation>
+                    <field name="VAR">xAccel</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="196" x="-554" y="927">
+    <mutation></mutation>
+    <field name="NAME">AppleReturned</field>
+    <statement name="STACK">
+      <block type="lexical_variable_set" id="197" inline="false">
+        <field name="VAR">global appleCounter</field>
+        <value name="VALUE">
+          <block type="math_subtract" id="198" inline="true">
+            <value name="A">
+              <block type="lexical_variable_get" id="199">
+                <field name="VAR">global appleCounter</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="200">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="201" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="AppleCounterLabel"></mutation>
+            <field name="COMPONENT_SELECTOR">AppleCounterLabel</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="lexical_variable_get" id="202">
+                <field name="VAR">global appleCounter</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="203" inline="false">
+                <value name="IF0">
+                  <block type="math_compare" id="204" inline="true">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="lexical_variable_get" id="205">
+                        <field name="VAR">global appleCounter</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="206">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="component_set_get" id="207" inline="false">
+                    <mutation component_type="Button" set_or_get="set" property_name="Enabled" is_generic="false" instance_name="ManualDecrementButton"></mutation>
+                    <field name="COMPONENT_SELECTOR">ManualDecrementButton</field>
+                    <field name="PROP">Enabled</field>
+                    <value name="VALUE">
+                      <block type="logic_false" id="208">
+                        <field name="BOOL">FALSE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="123" language-version="18"></yacodeblocks>
+</xml>
